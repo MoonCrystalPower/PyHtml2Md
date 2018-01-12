@@ -1,0 +1,26 @@
+language: python
+python:
+  - "3.5"
+  - "3.6"
+
+cache:
+  pip: true
+
+before_install:
+  - cp requirements.txt requirements.orig
+  - cat test-requirements.txt  >> requirements.txt
+  - sed -i.bak '/^-r/d' requirements.txt
+
+before_script:
+  - mv requirements.orig requirements.txt
+
+script:
+  - "pip install -r requirements.txt"
+  - coala --non-interactive
+  - pytest --cov=./pyhtml2md ./tests
+
+after_success:
+  - codecov
+
+notifications:
+  email: false
