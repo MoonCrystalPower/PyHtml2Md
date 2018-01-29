@@ -16,7 +16,7 @@ Python library for converting from html to markdown grammar.
 * STRONG
 * DATA 
 
-## Requirments
+## Requirements
 * python3
 
 ## Setup this module
